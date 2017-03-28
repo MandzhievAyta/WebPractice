@@ -1,7 +1,7 @@
 CREATE TABLE `Clients` (
 	`id` int NOT NULL AUTO_INCREMENT,
 	`type` enum('individual', 'organization') NOT NULL,
-	PRIMARY KEY (`id`, `type`)
+	PRIMARY KEY (`id`)
 );
 
 CREATE TABLE `Individuals` (
@@ -105,7 +105,7 @@ ALTER TABLE `Contacts` ADD CONSTRAINT `FK_Contacts_client` FOREIGN KEY (`client_
 
 ALTER TABLE `Individuals` ADD CONSTRAINT `FK_Individuals_client` FOREIGN KEY (`client_id`) REFERENCES `Clients`(`id`);
 
-ALTER TABLE `ContractsHistory` ADD CONSTRAINT `FK_ContractsHistory_client` FOREIGN KEY (`calltariff_id`) REFERENCES `CallTariffs`(`id`);
+ALTER TABLE `ContractsHistory` ADD CONSTRAINT `FK_ContractsHistory_calltariff` FOREIGN KEY (`calltariff_id`) REFERENCES `CallTariffs`(`id`);
 
 ALTER TABLE `ContractsHistory` ADD CONSTRAINT `FK_ContractsHistory_smstariff` FOREIGN KEY (`smstariff_id`) REFERENCES `SmsTariffs`(`id`);
 
@@ -121,7 +121,7 @@ ALTER TABLE `Organizations` ADD CONSTRAINT `FK_Organizations_client` FOREIGN KEY
 
 ALTER TABLE `ReplenishHistory` ADD CONSTRAINT `FK_ReplenishHistory_account` FOREIGN KEY (`account_id`) REFERENCES `Accounts`(`id`);
 
-ALTER TABLE `Accounts` ADD CONSTRAINT `FK_Accounts_account` FOREIGN KEY (`client_id`) REFERENCES `Clients`(`id`);
+ALTER TABLE `Accounts` ADD CONSTRAINT `FK_Accounts_client` FOREIGN KEY (`client_id`) REFERENCES `Clients`(`id`);
 
 ALTER TABLE `NumberGroups` ADD CONSTRAINT `FK_NumberGroups_account` FOREIGN KEY (`account_id`) REFERENCES `Accounts`(`id`);
 
