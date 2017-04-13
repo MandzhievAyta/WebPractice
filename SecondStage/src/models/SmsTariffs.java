@@ -12,6 +12,7 @@ public class SmsTariffs {
     private Integer id;
     private String name;
     private Integer price;
+    private Integer group_price;
     private Collection<ContractsHistory> contractsHistoriesById;
 
     @Id
@@ -33,6 +34,16 @@ public class SmsTariffs {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Basic
+    @Column(name = "group_price", nullable = false)
+    public Integer getGroupPrice() {
+        return price;
+    }
+
+    public void setGroupPrice(Integer price) {
+        this.price = price;
     }
 
     @Basic

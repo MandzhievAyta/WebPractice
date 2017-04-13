@@ -83,7 +83,7 @@ public class WriteoffsHistory {
     }
 
     @ManyToOne
-    @JoinColumn(name = "contract_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "contract_id", referencedColumnName = "id", nullable = false)
     public ContractsHistory getContractsHistoryByContractId() {
         return contractsHistoryByContractId;
     }
@@ -93,13 +93,19 @@ public class WriteoffsHistory {
     }
 
     @ManyToOne
-    @JoinColumn(name = "account_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "account_id", referencedColumnName = "id", nullable = false)
     public Accounts getAccountsByAccountId() {
         return accountsByAccountId;
     }
 
     public void setAccountsByAccountId(Accounts accountsByAccountId) {
         this.accountsByAccountId = accountsByAccountId;
+    }
+
+    @Override
+    public String toString() {
+        return "" + id + " " + date + " " + time + " " + value + " ContractId:" +
+                contractsHistoryByContractId.getId() + " AccountId" + accountsByAccountId.getId();
     }
 }
 

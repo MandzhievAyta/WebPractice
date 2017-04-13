@@ -100,7 +100,7 @@ public class ContractsHistory {
     }
 
     @ManyToOne
-    @JoinColumn(name = "account_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "account_id", referencedColumnName = "id", nullable = false)
     public Accounts getAccountsByAccountId() {
         return accountsByAccountId;
     }
@@ -110,7 +110,7 @@ public class ContractsHistory {
     }
 
     @ManyToOne
-    @JoinColumn(name = "calltariff_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "calltariff_id", referencedColumnName = "id")
     public CallTariffs getCallTariffsByCalltariffId() {
         return callTariffsByCalltariffId;
     }
@@ -120,7 +120,7 @@ public class ContractsHistory {
     }
 
     @ManyToOne
-    @JoinColumn(name = "smstariff_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "smstariff_id", referencedColumnName = "id")
     public SmsTariffs getSmsTariffsBySmstariffId() {
         return smsTariffsBySmstariffId;
     }
@@ -130,7 +130,7 @@ public class ContractsHistory {
     }
 
     @ManyToOne
-    @JoinColumn(name = "internettariff_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "internettariff_id", referencedColumnName = "id")
     public InternetTariffs getInternetTariffsByInternettariffId() {
         return internetTariffsByInternettariffId;
     }

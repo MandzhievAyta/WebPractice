@@ -1,6 +1,9 @@
-import DAO.ClientsDAO;
-import DAO.Impl.ClientsDAOImpl;
-import models.*;
+
+import DAO.AbstractDAO;
+import models.Contacts;
+import util.HibernateUtil;
+
+import java.util.List;
 
 
 /**
@@ -8,10 +11,13 @@ import models.*;
  */
 public class Main {
     public static void main(final String[] args) throws Exception {
-        ClientsDAO client = new ClientsDAOImpl();
-        Clients entity = new Clients();
-        entity.setId(3);
-        entity.setType(Clients.ClientType.organization);
-        client.addClients(entity);
+        AbstractDAO<Contacts> contactsDAO = new AbstractDAO<Contacts>() {};
+        List<Contacts> contactsList = contactsDAO.getAll();
+        for (Contacts c : contactsList) {
+            System.out.println(c);
+        }
+        HibernateUtil.closeSessionFactory();
+        System.out.println("!!!");
+
     }
 }

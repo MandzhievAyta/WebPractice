@@ -55,7 +55,7 @@ public class NumberGroups {
     }
 
     @ManyToOne
-    @JoinColumn(name = "account_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "account_id", referencedColumnName = "id", nullable = false)
     public Accounts getAccountsByAccountId() {
         return accountsByAccountId;
     }

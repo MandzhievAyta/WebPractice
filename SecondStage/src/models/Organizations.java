@@ -54,7 +54,7 @@ public class Organizations {
     }
 
     @ManyToOne
-    @JoinColumn(name = "client_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "client_id", referencedColumnName = "id", nullable = false)
     public Clients getClientsByClientId() {
         return clientsByClientId;
     }

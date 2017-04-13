@@ -12,6 +12,7 @@ public class CallTariffs {
     private Integer id;
     private Integer price;
     private String name;
+    private Integer group_price;
     private Collection<ContractsHistory> contractsHistoriesById;
 
     @Id
@@ -43,6 +44,16 @@ public class CallTariffs {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Basic
+    @Column(name = "group_price", nullable = false)
+    public Integer getGroupPrice() {
+        return price;
+    }
+
+    public void setGroupPrice(Integer price) {
+        this.price = price;
     }
 
     @Override

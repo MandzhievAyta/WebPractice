@@ -2,7 +2,7 @@ ALTER TABLE `Contacts` DROP FOREIGN KEY `FK_Contacts_client`;
 
 ALTER TABLE `Individuals` DROP FOREIGN KEY `FK_Individuals_client`;
 
-ALTER TABLE `ContractsHistory` DROP FOREIGN KEY `FK_ContractsHistory_client`;
+ALTER TABLE `ContractsHistory` DROP FOREIGN KEY `FK_ContractsHistory_calltariff`;
 
 ALTER TABLE `ContractsHistory` DROP FOREIGN KEY `FK_ContractsHistory_smstariff`;
 
@@ -18,7 +18,7 @@ ALTER TABLE `Organizations` DROP FOREIGN KEY `FK_Organizations_client`;
 
 ALTER TABLE `ReplenishHistory` DROP FOREIGN KEY `FK_ReplenishHistory_account`;
 
-ALTER TABLE `Accounts` DROP FOREIGN KEY `FK_Accounts_account`;
+ALTER TABLE `Accounts` DROP FOREIGN KEY `FK_Accounts_client`;
 
 ALTER TABLE `NumberGroups` DROP FOREIGN KEY `FK_NumberGroups_account`;
 

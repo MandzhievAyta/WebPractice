@@ -63,8 +63,8 @@ CREATE TABLE `ContractsHistory` (
     `relevance` enum('active', 'ended') NOT NULL,
 	`tariff_type` enum('call', 'sms', 'internet') NOT NULL,
 	`calltariff_id` int,
-	`smstariff_id` int NOT NULL,
-	`internettariff_id` int NOT NULL,
+	`smstariff_id` int,
+	`internettariff_id` int,
 	`date` DATE NOT NULL,
 	`time` TIME NOT NULL,
 	PRIMARY KEY (`id`)
@@ -84,6 +84,7 @@ CREATE TABLE `SmsTariffs` (
 	`id` int NOT NULL AUTO_INCREMENT,
 	`name` varchar(100) NOT NULL,
 	`price` int NOT NULL,
+	`group_price` int NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
@@ -91,6 +92,7 @@ CREATE TABLE `CallTariffs` (
 	`id` int NOT NULL AUTO_INCREMENT,
 	`price` int NOT NULL,
 	`name` varchar(100) NOT NULL,
+	`group_price` int NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
