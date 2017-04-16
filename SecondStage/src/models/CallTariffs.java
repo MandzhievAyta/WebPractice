@@ -13,7 +13,7 @@ public class CallTariffs {
     private Integer price;
     private String name;
     private Integer group_price;
-    private Collection<ContractsHistory> contractsHistoriesById;
+    private Collection<ContractsHistory> contractsHistories;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,11 +49,11 @@ public class CallTariffs {
     @Basic
     @Column(name = "group_price", nullable = false)
     public Integer getGroupPrice() {
-        return price;
+        return group_price;
     }
 
-    public void setGroupPrice(Integer price) {
-        this.price = price;
+    public void setGroupPrice(Integer group_price) {
+        this.group_price = group_price;
     }
 
     @Override
@@ -65,6 +65,7 @@ public class CallTariffs {
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (price != null ? !price.equals(that.price) : that.price != null) return false;
+        if (group_price != null ? !group_price.equals(that.group_price) : that.group_price != null) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
 
         return true;
@@ -75,15 +76,16 @@ public class CallTariffs {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (price != null ? price.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (group_price != null ? group_price.hashCode() : 0);
         return result;
     }
 
-    @OneToMany(mappedBy = "callTariffsByCalltariffId")
-    public Collection<ContractsHistory> getContractsHistoriesById() {
-        return contractsHistoriesById;
+    @OneToMany(mappedBy = "callTariff")
+    public Collection<ContractsHistory> getContractsHistories() {
+        return contractsHistories;
     }
 
-    public void setContractsHistoriesById(Collection<ContractsHistory> contractsHistoriesById) {
-        this.contractsHistoriesById = contractsHistoriesById;
+    public void setContractsHistories(Collection<ContractsHistory> contractsHistories) {
+        this.contractsHistories = contractsHistories;
     }
 }

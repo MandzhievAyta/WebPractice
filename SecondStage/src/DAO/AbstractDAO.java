@@ -3,14 +3,13 @@ package DAO;
 import org.hibernate.Session;
 import util.HibernateUtil;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
 
-/**
- * Created by ayta on 12.04.17.
- */
+
 public abstract class AbstractDAO<T> {
     private Class<T> type;
     public AbstractDAO() {
@@ -28,40 +27,41 @@ public abstract class AbstractDAO<T> {
     }
     @SuppressWarnings("unchecked")
     public List<T> getAll() {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        List<T> list = session.createCriteria(type).list();
-        session.getTransaction().commit();
-        session.close();
-        return list;
+        List<T> res;
+        EntityManager manager = HibernateUtil.getEm();
+        res = manager.createQuery("select e from " + type.getSimpleName() + " e", type).getResultList();
+        manager.close();
+        return res;
+
     }
     public void add(T entity) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        session.save(entity);
-        session.getTransaction().commit();
-        session.close();
+        EntityManager manager = HibernateUtil.getEm();
+        manager.getTransaction().begin();
+        manager.persist(entity);
+        manager.getTransaction().commit();
+        manager.close();
     }
-    public void delete(T entity) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        session.delete(entity);
-        session.getTransaction().commit();
-        session.close();
+    public void deleteById(int id) {
+        T delCandidate;
+        EntityManager manager = HibernateUtil.getEm();
+        manager.getTransaction().begin();
+        delCandidate = manager.find(type, id);
+        manager.remove(delCandidate);
+        manager.getTransaction().commit();
+        manager.close();
     }
-    public void updateFilm(T entity) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        session.update(entity);
-        session.getTransaction().commit();
-        session.close();
+    public void update(T entity) {
+        EntityManager manager = HibernateUtil.getEm();
+        manager.getTransaction().begin();
+        manager.merge(entity);
+        manager.getTransaction().commit();
+        manager.close();
     }
     public T getById(Integer id) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        T entity = session.get(type, id);
-        session.getTransaction().commit();
-        session.close();
+        T entity;
+        EntityManager manager = HibernateUtil.getEm();
+        entity = manager.find(type, id);
+        manager.close();
         return entity;
     }
 

@@ -12,7 +12,7 @@ public class InternetTariffs {
     private Integer id;
     private String name;
     private Integer price;
-    private Collection<ContractsHistory> contractsHistoriesById;
+    private Collection<ContractsHistory> contractsHistories;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -67,12 +67,12 @@ public class InternetTariffs {
         return result;
     }
 
-    @OneToMany(mappedBy = "internetTariffsByInternettariffId")
-    public Collection<ContractsHistory> getContractsHistoriesById() {
-        return contractsHistoriesById;
+    @OneToMany(mappedBy = "internetTariff")
+    public Collection<ContractsHistory> getContractsHistories() {
+        return contractsHistories;
     }
 
-    public void setContractsHistoriesById(Collection<ContractsHistory> contractsHistoriesById) {
-        this.contractsHistoriesById = contractsHistoriesById;
+    public void setContractsHistories(Collection<ContractsHistory> contractsHistories) {
+        this.contractsHistories = contractsHistories;
     }
 }

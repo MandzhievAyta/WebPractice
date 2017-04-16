@@ -14,7 +14,7 @@ public class ReplenishHistory {
     private Date date;
     private Time time;
     private Integer amount;
-    private Accounts accountsByAccountId;
+    private Accounts account;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -81,14 +81,14 @@ public class ReplenishHistory {
         return result;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "account_id", referencedColumnName = "id", nullable = false)
-    public Accounts getAccountsByAccountId() {
-        return accountsByAccountId;
+    public Accounts getAccount() {
+        return account;
     }
 
-    public void setAccountsByAccountId(Accounts accountsByAccountId) {
-        this.accountsByAccountId = accountsByAccountId;
+    public void setAccount(Accounts account) {
+        this.account = account;
     }
 }
 

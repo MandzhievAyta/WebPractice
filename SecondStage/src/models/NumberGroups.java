@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class NumberGroups {
     private Integer id;
     private Integer groupNumber;
-    private Accounts accountsByAccountId;
+    private Accounts account;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -56,12 +56,12 @@ public class NumberGroups {
 
     @ManyToOne
     @JoinColumn(name = "account_id", referencedColumnName = "id", nullable = false)
-    public Accounts getAccountsByAccountId() {
-        return accountsByAccountId;
+    public Accounts getAccount() {
+        return account;
     }
 
-    public void setAccountsByAccountId(Accounts accountsByAccountId) {
-        this.accountsByAccountId = accountsByAccountId;
+    public void setAccount(Accounts account) {
+        this.account = account;
     }
 }
 

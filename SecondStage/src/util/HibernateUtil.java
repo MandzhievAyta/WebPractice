@@ -1,38 +1,24 @@
 package util;
 
-import models.*;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
-
-/**
- * Created by ayta on 28.03.17.
- */
 public class HibernateUtil {
-    private static final SessionFactory sessionFactory;
+
+    private static final String PERSISTENT_UNIT_NAME = "jpa";
+
+    private static final EntityManagerFactory emf;
+
     static {
-        Configuration configuration = new Configuration();
-        configuration.configure();
-        configuration.addAnnotatedClass(Accounts.class);
-        configuration.addAnnotatedClass(CallTariffs.class);
-        configuration.addAnnotatedClass(Clients.class);
-        configuration.addAnnotatedClass(Contacts.class);
-        configuration.addAnnotatedClass(ContractsHistory.class);
-        configuration.addAnnotatedClass(Individuals.class);
-        configuration.addAnnotatedClass(InternetTariffs.class);
-        configuration.addAnnotatedClass(NumberGroups.class);
-        configuration.addAnnotatedClass(Organizations.class);
-        configuration.addAnnotatedClass(ReplenishHistory.class);
-        configuration.addAnnotatedClass(SmsTariffs.class);
-        configuration.addAnnotatedClass(WriteoffsHistory.class);
-
-        sessionFactory = configuration.buildSessionFactory();
+        emf = Persistence.createEntityManagerFactory(PERSISTENT_UNIT_NAME);
     }
 
-    public static SessionFactory getSessionFactory() {
-        return sessionFactory;
+    public static EntityManager getEm() {
+        return emf.createEntityManager();
     }
-    public static void closeSessionFactory() {
-        sessionFactory.close();
+
+    public static void closeEMF() {
+        emf.close();
     }
 }

@@ -14,7 +14,7 @@ public class Contacts {
     private String address;
     private String phoneNumber;
     private String mail;
-    private Clients clientsByClientId;
+    private Clients client;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -108,12 +108,12 @@ public class Contacts {
 
     @ManyToOne
     @JoinColumn(name = "client_id", referencedColumnName = "id", nullable = false)
-    public Clients getClientsByClientId() {
-        return clientsByClientId;
+    public Clients getClient() {
+        return client;
     }
 
-    public void setClientsByClientId(Clients clientsByClientId) {
-        this.clientsByClientId = clientsByClientId;
+    public void setClient(Clients client) {
+        this.client = client;
     }
 
     @Override

@@ -11,10 +11,10 @@ import java.util.Collection;
 public class Clients {
     private Integer id;
     private ClientType type;
-    private Collection<Accounts> accountsById;
-    private Collection<Contacts> contactsById;
-    private Collection<Individuals> individualsById;
-    private Collection<Organizations> organizationsById;
+    private Collection<Accounts> accounts;
+    private Collection<Contacts> contacts;
+    private Collection<Individuals> individuals;
+    private Collection<Organizations> organizations;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -58,55 +58,41 @@ public class Clients {
         return result;
     }
 
-    @OneToMany(mappedBy = "clientsByClientId")
-    public Collection<Accounts> getAccountsById() {
-        return accountsById;
+    @OneToMany(mappedBy = "client")
+    public Collection<Accounts> getAccounts() {
+        return accounts;
     }
 
-    public void setAccountsById(Collection<Accounts> accountsById) {
-        this.accountsById = accountsById;
+    public void setAccounts(Collection<Accounts> accounts) {
+        this.accounts = accounts;
     }
 
-    @OneToMany(mappedBy = "clientsByClientId")
-    public Collection<Contacts> getContactsById() {
-        return contactsById;
+    @OneToMany(mappedBy = "client")
+    public Collection<Contacts> getContacts() {
+        return contacts;
     }
 
-    public void setContactsById(Collection<Contacts> contactsById) {
-        this.contactsById = contactsById;
+    public void setContacts(Collection<Contacts> contacts) {
+        this.contacts = contacts;
     }
 
-    @OneToMany(mappedBy = "clientsByClientId")
-    public Collection<Individuals> getIndividualsById() {
-        return individualsById;
+    @OneToMany(mappedBy = "client")
+    public Collection<Individuals> getIndividuals() {
+        return individuals;
     }
 
-    public void setIndividualsById(Collection<Individuals> individualsById) {
-        this.individualsById = individualsById;
+    public void setIndividuals(Collection<Individuals> individuals) {
+        this.individuals = individuals;
     }
 
-    @OneToMany(mappedBy = "clientsByClientId")
-    public Collection<Organizations> getOrganizationsById() {
-        return organizationsById;
+    @OneToMany(mappedBy = "client")
+    public Collection<Organizations> getOrganizations() {
+        return organizations;
     }
 
-    public void setOrganizationsById(Collection<Organizations> organizationsById) {
-        this.organizationsById = organizationsById;
+    public void setOrganizations(Collection<Organizations> organizations) {
+        this.organizations = organizations;
     }
 
-    public enum ClientType {
-        individual("individual"),
-        organization("organization");
-
-        private final String label;
-
-        ClientType(String label) {
-            this.label = label;
-        }
-
-        public String getLabel() {
-            return label;
-        }
-
-    }
+    public enum ClientType { individual, organization }
 }

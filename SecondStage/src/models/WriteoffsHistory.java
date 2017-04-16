@@ -14,8 +14,8 @@ public class WriteoffsHistory {
     private Date date;
     private Time time;
     private Integer value;
-    private ContractsHistory contractsHistoryByContractId;
-    private Accounts accountsByAccountId;
+    private ContractsHistory contractsHistory;
+    private Accounts account;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -82,30 +82,30 @@ public class WriteoffsHistory {
         return result;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "contract_id", referencedColumnName = "id", nullable = false)
-    public ContractsHistory getContractsHistoryByContractId() {
-        return contractsHistoryByContractId;
+    public ContractsHistory getContractsHistory() {
+        return contractsHistory;
     }
 
-    public void setContractsHistoryByContractId(ContractsHistory contractsHistoryByContractId) {
-        this.contractsHistoryByContractId = contractsHistoryByContractId;
+    public void setContractsHistory(ContractsHistory contractsHistory) {
+        this.contractsHistory = contractsHistory;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "account_id", referencedColumnName = "id", nullable = false)
-    public Accounts getAccountsByAccountId() {
-        return accountsByAccountId;
+    public Accounts getAccount() {
+        return account;
     }
 
-    public void setAccountsByAccountId(Accounts accountsByAccountId) {
-        this.accountsByAccountId = accountsByAccountId;
+    public void setAccount(Accounts account) {
+        this.account = account;
     }
 
     @Override
     public String toString() {
         return "" + id + " " + date + " " + time + " " + value + " ContractId:" +
-                contractsHistoryByContractId.getId() + " AccountId" + accountsByAccountId.getId();
+                contractsHistory.getId() + " AccountId" + account.getId();
     }
 }
 

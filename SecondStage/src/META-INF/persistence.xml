@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+    <persistence-unit name="jpa" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>models.Accounts</class>
+        <class>models.CallTariffs</class>
+        <class>models.Clients</class>
+        <class>models.Contacts</class>
+        <class>models.ContractsHistory</class>
+        <class>models.Individuals</class>
+        <class>models.InternetTariffs</class>
+        <class>models.NumberGroups</class>
+        <class>models.Organizations</class>
+        <class>models.ReplenishHistory</class>
+        <class>models.SmsTariffs</class>
+        <class>models.WriteoffsHistory</class>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:mysql://localhost:3306/telecomm_operator"></property>
+            <property name="javax.persistence.jdbc.user" value="root"></property>
+            <property name="javax.persistence.jdbc.password" value="123456"></property>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"></property>
+        </properties>
+    </persistence-unit>
+</persistence>

@@ -16,11 +16,11 @@ public class ContractsHistory {
     private TariffType tariffType;
     private Date date;
     private Time time;
-    private Accounts accountsByAccountId;
-    private CallTariffs callTariffsByCalltariffId;
-    private SmsTariffs smsTariffsBySmstariffId;
-    private InternetTariffs internetTariffsByInternettariffId;
-    private Collection<WriteoffsHistory> writeoffsHistoriesById;
+    private Accounts account;
+    private CallTariffs callTariff;
+    private SmsTariffs smsTariff;
+    private InternetTariffs internetTariff;
+    private Collection<WriteoffsHistory> writeoffsHistories;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -99,83 +99,54 @@ public class ContractsHistory {
         return result;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "account_id", referencedColumnName = "id", nullable = false)
-    public Accounts getAccountsByAccountId() {
-        return accountsByAccountId;
+    public Accounts getAccount() {
+        return account;
     }
 
-    public void setAccountsByAccountId(Accounts accountsByAccountId) {
-        this.accountsByAccountId = accountsByAccountId;
+    public void setAccount(Accounts account) {
+        this.account = account;
     }
 
     @ManyToOne
     @JoinColumn(name = "calltariff_id", referencedColumnName = "id")
-    public CallTariffs getCallTariffsByCalltariffId() {
-        return callTariffsByCalltariffId;
+    public CallTariffs getCallTariff() {
+        return callTariff;
     }
 
-    public void setCallTariffsByCalltariffId(CallTariffs callTariffsByCalltariffId) {
-        this.callTariffsByCalltariffId = callTariffsByCalltariffId;
+    public void setCallTariff(CallTariffs callTariffs) {
+        this.callTariff = callTariffs;
     }
 
     @ManyToOne
     @JoinColumn(name = "smstariff_id", referencedColumnName = "id")
-    public SmsTariffs getSmsTariffsBySmstariffId() {
-        return smsTariffsBySmstariffId;
+    public SmsTariffs getSmsTariff() {
+        return smsTariff;
     }
 
-    public void setSmsTariffsBySmstariffId(SmsTariffs smsTariffsBySmstariffId) {
-        this.smsTariffsBySmstariffId = smsTariffsBySmstariffId;
+    public void setSmsTariff(SmsTariffs smsTariffs) {
+        this.smsTariff = smsTariffs;
     }
 
     @ManyToOne
     @JoinColumn(name = "internettariff_id", referencedColumnName = "id")
-    public InternetTariffs getInternetTariffsByInternettariffId() {
-        return internetTariffsByInternettariffId;
+    public InternetTariffs getInternetTariff() {
+        return internetTariff;
     }
 
-    public void setInternetTariffsByInternettariffId(InternetTariffs internetTariffsByInternettariffId) {
-        this.internetTariffsByInternettariffId = internetTariffsByInternettariffId;
+    public void setInternetTariff(InternetTariffs internetTariffsByInternettariffId) {
+        this.internetTariff = internetTariffsByInternettariffId;
     }
 
-    @OneToMany(mappedBy = "contractsHistoryByContractId")
-    public Collection<WriteoffsHistory> getWriteoffsHistoriesById() {
-        return writeoffsHistoriesById;
+    @OneToMany(mappedBy = "contractsHistory")
+    public Collection<WriteoffsHistory> getWriteoffsHistories() {
+        return writeoffsHistories;
     }
 
-    public void setWriteoffsHistoriesById(Collection<WriteoffsHistory> writeoffsHistoriesById) {
-        this.writeoffsHistoriesById = writeoffsHistoriesById;
+    public void setWriteoffsHistories(Collection<WriteoffsHistory> writeoffsHistories) {
+        this.writeoffsHistories = writeoffsHistories;
     }
-    public enum Relevance {
-        ACTIVE("active"),
-        ENDED("ended");
-
-        private final String label;
-
-        Relevance(String label) {
-            this.label = label;
-        }
-
-        public String getLabel() {
-            return label;
-        }
-
-    }
-    public enum TariffType {
-        CALL("call"),
-        SMS("sms"),
-        INTERNET("internet");
-
-        private final String label;
-
-        TariffType(String label) {
-            this.label = label;
-        }
-
-        public String getLabel() {
-            return label;
-        }
-
-    }
+    public enum Relevance { active, ended }
+    public enum TariffType { call, sms, internet }
 }

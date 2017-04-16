@@ -11,7 +11,7 @@ public class Individuals {
     private Integer id;
     private String firstName;
     private String secondName;
-    private Clients clientsByClientId;
+    private Clients client;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -66,14 +66,14 @@ public class Individuals {
         return result;
     }
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.PERSIST)
     @JoinColumn(name = "client_id", referencedColumnName = "id", nullable = false)
-    public Clients getClientsByClientId() {
-        return clientsByClientId;
+    public Clients getClient() {
+        return client;
     }
 
-    public void setClientsByClientId(Clients clientsByClientId) {
-        this.clientsByClientId = clientsByClientId;
+    public void setClient(Clients client) {
+        this.client = client;
     }
 }
 

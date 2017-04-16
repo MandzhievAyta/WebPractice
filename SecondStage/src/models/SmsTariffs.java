@@ -13,7 +13,7 @@ public class SmsTariffs {
     private String name;
     private Integer price;
     private Integer group_price;
-    private Collection<ContractsHistory> contractsHistoriesById;
+    private Collection<ContractsHistory> contractsHistories;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -78,12 +78,10 @@ public class SmsTariffs {
         return result;
     }
 
-    @OneToMany(mappedBy = "smsTariffsBySmstariffId")
-    public Collection<ContractsHistory> getContractsHistoriesById() {
-        return contractsHistoriesById;
-    }
+    @OneToMany(mappedBy = "smsTariff")
+    public Collection<ContractsHistory> getContractsHistories() { return contractsHistories; }
 
-    public void setContractsHistoriesById(Collection<ContractsHistory> contractsHistoriesById) {
-        this.contractsHistoriesById = contractsHistoriesById;
+    public void setContractsHistories(Collection<ContractsHistory> contractsHistories) {
+        this.contractsHistories = contractsHistories;
     }
 }

@@ -17,11 +17,11 @@ public class Accounts {
     private Date payDebtDate;
     private Time payDebtTime;
     private String phoneNumber;
-    private Clients clientsByClientId;
-    private Collection<ContractsHistory> contractsHistoriesById;
-    private Collection<NumberGroups> numberGroupssById;
-    private Collection<ReplenishHistory> replenishHistoriesById;
-    private Collection<WriteoffsHistory> writeoffsHistoriesById;
+    private Clients client;
+    private Collection<ContractsHistory> contractsHistories;
+    private Collection<NumberGroups> numberGroups;
+    private Collection<ReplenishHistory> replenishHistories;
+    private Collection<WriteoffsHistory> writeoffsHistories;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -116,50 +116,50 @@ public class Accounts {
         return result;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "client_id", referencedColumnName = "id", nullable = false)
-    public Clients getClientsByClientId() {
-        return clientsByClientId;
+    public Clients getClient() {
+        return client;
     }
 
-    public void setClientsByClientId(Clients clientsByClientId) {
-        this.clientsByClientId = clientsByClientId;
+    public void setClient(Clients client) {
+        this.client = client;
     }
 
-    @OneToMany(mappedBy = "accountsByAccountId")
+    @OneToMany(mappedBy = "account")
     public Collection<ContractsHistory> getContractsHistoriesById() {
-        return contractsHistoriesById;
+        return contractsHistories;
     }
 
     public void setContractsHistoriesById(Collection<ContractsHistory> contractsHistoriesById) {
-        this.contractsHistoriesById = contractsHistoriesById;
+        this.contractsHistories = contractsHistoriesById;
     }
 
-    @OneToMany(mappedBy = "accountsByAccountId")
+    @OneToMany(mappedBy = "account")
     public Collection<NumberGroups> getNumberGroupssById() {
-        return numberGroupssById;
+        return numberGroups;
     }
 
     public void setNumberGroupssById(Collection<NumberGroups> numberGroupssById) {
-        this.numberGroupssById = numberGroupssById;
+        this.numberGroups = numberGroupssById;
     }
 
-    @OneToMany(mappedBy = "accountsByAccountId")
+    @OneToMany(mappedBy = "account")
     public Collection<ReplenishHistory> getReplenishHistoriesById() {
-        return replenishHistoriesById;
+        return replenishHistories;
     }
 
     public void setReplenishHistoriesById(Collection<ReplenishHistory> replenishHistoriesById) {
-        this.replenishHistoriesById = replenishHistoriesById;
+        this.replenishHistories = replenishHistoriesById;
     }
 
-    @OneToMany(mappedBy = "accountsByAccountId")
+    @OneToMany(mappedBy = "account")
     public Collection<WriteoffsHistory> getWriteoffsHistoriesById() {
-        return writeoffsHistoriesById;
+        return writeoffsHistories;
     }
 
     public void setWriteoffsHistoriesById(Collection<WriteoffsHistory> writeoffsHistoriesById) {
-        this.writeoffsHistoriesById = writeoffsHistoriesById;
+        this.writeoffsHistories = writeoffsHistoriesById;
     }
 }
 

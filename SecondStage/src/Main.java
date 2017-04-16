@@ -1,5 +1,6 @@
 
 import DAO.AbstractDAO;
+import DAO.Impl.ContactsDAO;
 import models.Contacts;
 import util.HibernateUtil;
 
@@ -11,12 +12,12 @@ import java.util.List;
  */
 public class Main {
     public static void main(final String[] args) throws Exception {
-        AbstractDAO<Contacts> contactsDAO = new AbstractDAO<Contacts>() {};
+        AbstractDAO<Contacts> contactsDAO = new ContactsDAO();
         List<Contacts> contactsList = contactsDAO.getAll();
         for (Contacts c : contactsList) {
             System.out.println(c);
         }
-        HibernateUtil.closeSessionFactory();
+        HibernateUtil.closeEMF();
         System.out.println("!!!");
 
     }
