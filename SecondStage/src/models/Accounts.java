@@ -97,7 +97,7 @@ public class Accounts {
         if (maxDebt != null ? !maxDebt.equals(accounts.maxDebt) : accounts.maxDebt != null) return false;
         if (payDebtDate != null ? !payDebtDate.equals(accounts.payDebtDate) : accounts.payDebtDate != null)
             return false;
-        if (payDebtTime != null ? !payDebtTime.equals(accounts.payDebtTime) : accounts.payDebtTime != null)
+        if (payDebtTime != null ? !payDebtTime.toString().equals(accounts.payDebtTime.toString()) : accounts.payDebtTime != null)
             return false;
         if (phoneNumber != null ? !phoneNumber.equals(accounts.phoneNumber) : accounts.phoneNumber != null)
             return false;
@@ -127,39 +127,39 @@ public class Accounts {
     }
 
     @OneToMany(mappedBy = "account")
-    public Collection<ContractsHistory> getContractsHistoriesById() {
+    public Collection<ContractsHistory> getContractsHistories() {
         return contractsHistories;
     }
 
-    public void setContractsHistoriesById(Collection<ContractsHistory> contractsHistoriesById) {
-        this.contractsHistories = contractsHistoriesById;
+    public void setContractsHistories(Collection<ContractsHistory> contractsHistories) {
+        this.contractsHistories = contractsHistories;
     }
 
     @OneToMany(mappedBy = "account")
-    public Collection<NumberGroups> getNumberGroupssById() {
+    public Collection<NumberGroups> getNumberGroups() {
         return numberGroups;
     }
 
-    public void setNumberGroupssById(Collection<NumberGroups> numberGroupssById) {
-        this.numberGroups = numberGroupssById;
+    public void setNumberGroups(Collection<NumberGroups> numberGroups) {
+        this.numberGroups = numberGroups;
     }
 
     @OneToMany(mappedBy = "account")
-    public Collection<ReplenishHistory> getReplenishHistoriesById() {
+    public Collection<ReplenishHistory> getReplenishHistories() {
         return replenishHistories;
     }
 
-    public void setReplenishHistoriesById(Collection<ReplenishHistory> replenishHistoriesById) {
-        this.replenishHistories = replenishHistoriesById;
+    public void setReplenishHistories(Collection<ReplenishHistory> replenishHistories) {
+        this.replenishHistories = replenishHistories;
     }
 
     @OneToMany(mappedBy = "account")
-    public Collection<WriteoffsHistory> getWriteoffsHistoriesById() {
+    public Collection<WriteoffsHistory> getWriteoffsHistories() {
         return writeoffsHistories;
     }
 
-    public void setWriteoffsHistoriesById(Collection<WriteoffsHistory> writeoffsHistoriesById) {
-        this.writeoffsHistories = writeoffsHistoriesById;
+    public void setWriteoffsHistories(Collection<WriteoffsHistory> writeoffsHistories) {
+        this.writeoffsHistories = writeoffsHistories;
     }
 }
 

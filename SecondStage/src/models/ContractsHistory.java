@@ -84,7 +84,7 @@ public class ContractsHistory {
         if (relevance != null ? !relevance.equals(that.relevance) : that.relevance != null) return false;
         if (tariffType != null ? !tariffType.equals(that.tariffType) : that.tariffType != null) return false;
         if (date != null ? !date.equals(that.date) : that.date != null) return false;
-        if (time != null ? !time.equals(that.time) : that.time != null) return false;
+        if (time != null ? !time.toString().equals(that.time.toString()) : that.time != null) return false;
 
         return true;
     }
@@ -149,4 +149,9 @@ public class ContractsHistory {
     }
     public enum Relevance { active, ended }
     public enum TariffType { call, sms, internet }
+
+    @Override
+    public String toString() {
+        return "" + relevance + " " + tariffType + " " + date + " " + time + " " + account.getId();
+    }
 }

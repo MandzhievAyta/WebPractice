@@ -1,7 +1,10 @@
 
 import DAO.AbstractDAO;
-import DAO.Impl.ContactsDAO;
+import DAO.Impl.ContractsHistoryDAO;
+import DAO.Impl.WriteoffsHistoryDAO;
 import models.Contacts;
+import models.ContractsHistory;
+import models.WriteoffsHistory;
 import util.HibernateUtil;
 
 import java.util.List;
@@ -12,13 +15,16 @@ import java.util.List;
  */
 public class Main {
     public static void main(final String[] args) throws Exception {
-        AbstractDAO<Contacts> contactsDAO = new ContactsDAO();
-        List<Contacts> contactsList = contactsDAO.getAll();
-        for (Contacts c : contactsList) {
-            System.out.println(c);
+        WriteoffsHistoryDAO writeoffsHistoryDAO = new WriteoffsHistoryDAO();
+        List<WriteoffsHistory> contractHistoryList = writeoffsHistoryDAO.getAll();
+        for (WriteoffsHistory kek : contractHistoryList) {
+            System.out.println(kek);
+        }
+        System.out.println("---------------");
+        for (WriteoffsHistory col : writeoffsHistoryDAO.getWriteoffsByAccountId(1)) {
+            System.out.println(col);
         }
         HibernateUtil.closeEMF();
-        System.out.println("!!!");
 
     }
 }

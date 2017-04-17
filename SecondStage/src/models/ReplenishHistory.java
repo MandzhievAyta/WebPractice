@@ -66,7 +66,7 @@ public class ReplenishHistory {
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (date != null ? !date.equals(that.date) : that.date != null) return false;
-        if (time != null ? !time.equals(that.time) : that.time != null) return false;
+        if (time != null ? !time.toString().equals(that.time.toString()) : that.time != null) return false;
         if (amount != null ? !amount.equals(that.amount) : that.amount != null) return false;
 
         return true;
