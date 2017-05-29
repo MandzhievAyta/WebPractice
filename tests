@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8080/" />
+<title>tests</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">tests</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/SpringMVCHibernate/clientsHome</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Add/Edit Individual clients']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=firstName</td>
+	<td>Ayta</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=secondName</td>
+	<td>Mandzhiev</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=td &gt; input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//tr[5]/td[2]</td>
+	<td>Ayta</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//tr[5]/td[3]</td>
+	<td>Mandzhiev</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Edit/Info</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=secondName</td>
+	<td>Urgant</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=td &gt; input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Add/Edit Individual clients']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Edit/Info</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Add account']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=clientId</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=balance</td>
+	<td>1000000</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=maxDebt</td>
+	<td>20000</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=payDebtDate</td>
+	<td>2017-02-02</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=payDebtTime</td>
+	<td>00:00:00</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=phoneNumber</td>
+	<td>89857856624</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=td &gt; input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//tr[8]/td[3]</td>
+	<td>1000000</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//tr[8]/td[4]</td>
+	<td>20000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Add/Edit Individual clients']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Edit/Info</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//tr[3]/td[3]</td>
+	<td>1000000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Tariffs Page']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Add/Edit Sms tariffs']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=name</td>
+	<td>Smart</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=price</td>
+	<td>5</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=group_price</td>
+	<td>0</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=td &gt; input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//tr[5]/td[2]</td>
+	<td>Smart</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Groups of Numbers']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=accountId</td>
+	<td>7</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=groupNumber</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=td &gt; input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//tr[8]/td[2]</td>
+	<td>7</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//tr[8]/td[3]</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>
